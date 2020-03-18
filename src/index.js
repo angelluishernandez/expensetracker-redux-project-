@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Router } from "react-router-dom";
+import Destructuring from "./playground/destructuring";
 
 const routes = <BrowserRouter>
 
@@ -11,7 +12,7 @@ const routes = <BrowserRouter>
 
 ReactDOM.render(
 	<BrowserRouter>
-		<App />
+		<Destructuring />
 	</BrowserRouter>,
 	document.getElementById("root")
 );
