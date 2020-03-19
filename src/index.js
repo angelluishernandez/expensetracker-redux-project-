@@ -4,31 +4,33 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Router } from "react-router-dom";
+import {AdminInfo} from "./playground/hoc"
 // Redux
 
-import configStore from "./redux/store/configStore";
-import {addExpense}  from "./redux/actions/expenses";
-import { setTextFilter } from "./redux/actions/filter";
-import getVisibleExpenses from "./redux/selectors/expenses.selector";
+// import configStore from "./redux/store/configStore";
+// import {addExpense}  from "./redux/actions/expenses";
+// import { setTextFilter } from "./redux/actions/filter";
+// import getVisibleExpenses from "./redux/selectors/expenses.selector";
 
-const store = configStore();
-store.dispatch(addExpense({ description: "Water bill" }));
-store.dispatch(addExpense({ description: "Gas Billl" }));
-store.dispatch(setTextFilter("gas"))
+// const store = configStore();
+// store.dispatch(addExpense({ description: "Water bill" }));
+// store.dispatch(addExpense({ description: "Gas Billl" }));
+// store.dispatch(setTextFilter("gas"))
 
-const state = store.getState()
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
-console.log(visibleExpenses)
+// const state = store.getState()
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
+// console.log(visibleExpenses)
 
 
-console.log(store.getState());
+// console.log(store.getState());
 
 
 
 ReactDOM.render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>,
+	<AdminInfo isAuthenticated={true} info="Hola" />,
+	// <BrowserRouter>
+	// 	<App />
+	// </BrowserRouter>,
 	document.getElementById("root")
 );
 
