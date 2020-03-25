@@ -9,32 +9,29 @@ import { AdminInfo } from "./playground/hoc";
 // Redux
 
 import configStore from "./redux/store/configStore";
-import {addExpense}  from "./redux/actions/expenses";
+import { addExpense } from "./redux/actions/expenses";
 import { setTextFilter } from "./redux/actions/filter";
 import getVisibleExpenses from "./redux/selectors/expenses.selector";
 
 const store = configStore();
-store.dispatch(addExpense({ description: "Water bill", amount: 10000}));
+store.dispatch(addExpense({ description: "Water bill", amount: 10000 }));
 store.dispatch(addExpense({ description: "Gas Billl", createdAt: 1000 }));
 store.dispatch(addExpense({ description: "Rent", amount: 500000 }));
 
-
-const state = store.getState()
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
-console.log(visibleExpenses)
+const state = store.getState();
+const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+console.log(visibleExpenses);
 
 console.log(store.getState());
 
 const jsx = (
-	
-	<Provider store = {store}>
-		<App />
+	<Provider store={store}>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</Provider>
 );
 
-ReactDOM.render(
-	<BrowserRouter>{jsx}</BrowserRouter>,
-	document.getElementById("root")
-);
+ReactDOM.render(jsx, document.getElementById("root"));
 
 serviceWorker.unregister();

@@ -12,12 +12,13 @@ import Header from "./misc/Header";
 function App() {
 	return (
 		<div className="App">
-      <Header/>
+			<Header />
 			<Switch>
 				<Route exact path="/" component={ExpenseDashBoard} />
 				<Route exact path="/create" component={AddExpensePage} />
 				<Route exact path="/edit" component={EditExpensePage} />
 				<Route exact path="/help" component={HelpPage} />
+				<Route exact path="/edit/:id" component={EditExpensePage} />
 				<Route component={NotFoundPage} />
 			</Switch>
 		</div>
