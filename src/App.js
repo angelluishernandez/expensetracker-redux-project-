@@ -10,21 +10,18 @@ import NotFoundPage from "./misc/NotFoundPage";
 import Header from "./misc/Header";
 import "react-dates/lib/css/_datepicker.css";
 
-
 function App() {
 	return (
 		<div className="App">
-			<Router>
-				<Header />
-				<Switch>
-					<Route exact path="/" component={ExpenseDashBoard} />
-					<Route exact path="/create" component={AddExpensePage} />
-					<Route exact path="/edit" component={EditExpensePage} />
-					<Route exact path="/help" component={HelpPage} />
-					<Route exact path="/edit/:id" component={EditExpensePage} />
-					<Route component={NotFoundPage} />
-				</Switch>
-			</Router>
+			<Header />
+			<Switch>
+				<Route exact path="/" component={ExpenseDashBoard} />
+				<Route exact path="/create" component={AddExpensePage} />
+				<Route exact path="/edit" component={EditExpensePage} />
+				<Route exact path="/help" component={HelpPage} />
+				<Route exact path="/edit/:id" component={EditExpensePage} />
+				<Route component={NotFoundPage} />
+			</Switch>
 		</div>
 	);
 }
