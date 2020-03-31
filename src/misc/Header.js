@@ -14,9 +14,7 @@ const Header = () => (
 		<NavLink to="/edit" activeClassName="is-active">
 			Edit a Expense
 		</NavLink>
-		<NavLink to="/help" activeClassName="is-active">
-			Get help
-		</NavLink>
+	
 	</header>
 );
 

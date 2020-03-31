@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render NotFoundPage correctly 1`] = `
+<div
+  className="ExpenseDashBoard"
+>
+  <h1>
+    Expense Dashboard
+  </h1>
+  <Connect(ExpanseListFilters) />
+  <Connect(ExpenseList) />
+</div>
+`;

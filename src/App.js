@@ -8,6 +8,8 @@ import EditExpensePage from "./components/EditExpensePage";
 import HelpPage from "./components/HelpPage";
 import NotFoundPage from "./misc/NotFoundPage";
 import Header from "./misc/Header";
+import "react-dates/lib/css/_datepicker.css";
+
 
 function App() {
 	return (
