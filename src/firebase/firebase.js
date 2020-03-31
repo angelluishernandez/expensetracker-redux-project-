@@ -1,7 +1,7 @@
 import * as firebase from "firebase"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB5OXXhMhapSO88n7HXHJqqVIjGJmR08F0",
+  apiKey: process.env.GOOGLE_API_KEY,
   authDomain: "expense-tracker-5beb1.firebaseapp.com",
   databaseURL: "https://expense-tracker-5beb1.firebaseio.com",
   projectId: "expense-tracker-5beb1",
@@ -15,5 +15,11 @@ firebase.initializeApp(firebaseConfig)
 
 firebase.database().ref().set({
   name: "Angel",
+  age: 32, 
+  isSingle: false, 
+  location: {
+    city: "Madrid", 
+    country: "Spain"
+  }
 })
 
