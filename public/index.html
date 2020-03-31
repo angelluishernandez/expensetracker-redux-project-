@@ -2,14 +2,35 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Indecision App</title>
 	</head>
 
 	<body>
 		<div id="root"></div>
-	
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: "AIzaSyB5OXXhMhapSO88n7HXHJqqVIjGJmR08F0",
+				authDomain: "expense-tracker-5beb1.firebaseapp.com",
+				databaseURL: "https://expense-tracker-5beb1.firebaseio.com",
+				projectId: "expense-tracker-5beb1",
+				storageBucket: "expense-tracker-5beb1.appspot.com",
+				messagingSenderId: "464148932892",
+				appId: "1:464148932892:web:300e1dd7b0164a72b072d9",
+				measurementId: "G-GKTM5W3Z6H",
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			firebase.analytics();
+		</script>
 		<script type="text/jsx" src="/scripts/app.js"></script>
 	</body>
 </html>
-
