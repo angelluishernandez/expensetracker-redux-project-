@@ -74,8 +74,8 @@ test("should render EditExpenseListFilters with alt data correctly", () => {
 
 // });
 
-test("should handle date focus change", () => {
-	const calendarFocused = "endDate";
-	wrapper.find("DateRangePicker").prop("onFocusedChange")(calendarFocused);
-	expect(wrapper.state("calendarFocused")).toBe(calendarFocused);
-});
+// test("should handle date focus change", () => {
+// 	const calendarFocused = "endDate";
+// 	wrapper.find("DateRangePicker").prop("onFocusedChange")(calendarFocused);
+// 	expect(wrapper.state("calendarFocused")).toBe(calendarFocused);
+// });
