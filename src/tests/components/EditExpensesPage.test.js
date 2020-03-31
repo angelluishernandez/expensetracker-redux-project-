@@ -6,6 +6,7 @@ import Adapter from "enzyme-adapter-react-16";
 import toJSON from "enzyme-to-json";
 import { EditExpensePage } from "../../components/EditExpensePage";
 
+
 configure({ adapter: new Adapter() });
 
 let editExpense, removeExpense, history, wrapper;

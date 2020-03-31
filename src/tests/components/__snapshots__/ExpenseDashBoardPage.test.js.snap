@@ -7,7 +7,7 @@ exports[`should render NotFoundPage correctly 1`] = `
   <h1>
     Expense Dashboard
   </h1>
-  <Connect(ExpanseListFilters) />
+  <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
 </div>
 `;
