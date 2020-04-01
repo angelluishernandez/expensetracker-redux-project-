@@ -14,13 +14,9 @@ import { setTextFilter } from "./redux/actions/filter";
 import getVisibleExpenses from "./redux/selectors/expenses.selector";
 
 const store = configStore();
-store.dispatch(addExpense({ description: "Water bill", amount: 10000 }));
-store.dispatch(addExpense({ description: "Gas Billl", createdAt: 1000 }));
-store.dispatch(addExpense({ description: "Rent", amount: 500000 }));
-
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(visibleExpenses);
+// console.log(visibleExpenses);
 
 console.log(store.getState());
 
