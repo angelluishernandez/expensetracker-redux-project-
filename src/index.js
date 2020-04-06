@@ -9,7 +9,7 @@ import { AdminInfo } from "./playground/hoc";
 // Redux
 
 import configStore from "./redux/store/configStore";
-import { addExpense } from "./redux/actions/expenses";
+import { startSetExpenses } from "./redux/actions/expenses";
 import { setTextFilter } from "./redux/actions/filter";
 import getVisibleExpenses from "./redux/selectors/expenses.selector";
 
@@ -27,7 +27,10 @@ const jsx = (
 		</BrowserRouter>
 	</Provider>
 );
+ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
-ReactDOM.render(jsx, document.getElementById("root"));
+store.dispatch(startSetExpenses()).then(() => {
+	ReactDOM.render(jsx, document.getElementById("root"));
+});
 
 serviceWorker.unregister();

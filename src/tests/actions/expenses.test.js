@@ -3,14 +3,33 @@ import {
 	startAddExpense,
 	editExpense,
 	removeExpense,
+	setExpenses,
+	startSetExpenses,
 } from "../../redux/actions/expenses";
 import expenses from "../fixtures/expenses";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import database from "../../firebase/firebase";
+import expensesReducer from "../../redux/reducers/expenses.reducer";
 const createMockStore = configureMockStore([thunk]);
 
 // We cannot use toBe because {} === {} && [] === [] => FALSY
+
+beforeEach((done) => {
+	const expensesData = {};
+	expenses.forEach(({ id, description, note, amount, createdAt }) => {
+		expensesData[id] = {
+			description,
+			note,
+			amount,
+			createdAt,
+		};
+	});
+	database
+		.ref("expenses")
+		.set(expensesData)
+		.then(() => done());
+});
 
 test("Should setup remove expense action object", () => {
 	const action = removeExpense({ id: "123" });
@@ -37,6 +56,34 @@ test("Should setup add expense action object with provided values", () => {
 	});
 });
 
+test("Should setup set expenses action object with data", () => {
+	const action = setExpenses(expenses);
+	expect(action).toEqual({
+		type: "SET_EXPENSES",
+		expenses,
+	});
+});
+
+test("should set up expenses ", () => {
+	const action = {
+		type: "SET_EXPENSES",
+		expenses: [expenses[1]],
+	};
+	const state = expensesReducer(expenses, action);
+	expect(state).toEqual([expenses[1]]);
+});
+
+test("should fetch the expenses from firebase ", (done) => {
+	const store = createMockStore({});
+	store.dispatch(startSetExpenses()).then(() => {
+		const actions = store.getActions();
+		expect(actions[0]).toEqual({
+			type: "SET_EXPENSES",
+			expenses,
+		});
+		done()
+	});
+});
 // test("should add expense to database and store", () => {
 // 	const store = createMockStore({});
 // 	const expenseData = {
