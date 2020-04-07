@@ -1,31 +1,31 @@
 import * as firebase from "firebase";
 
+console.log(process.env);
+
 const firebaseConfig = {
-	apiKey: process.env.FIREBASE_GOOGLE_API_KEY,
-	authDomain: process.env.FIREBASE_AUTH_DOMAIN, 
-	databaseURL: "https://expense-tracker-5beb1.firebaseio.com",
-	projectId: process.env.FIREBASE_PROJECT_ID,
-	storageBucket: process.env.FIREBASE_STORAGE_BUCKET ,
-	messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-	appId: process.env.FIREBASE_APP_ID ,
-	measurementId: process.env.FIREBASE_MEASUREMENT_ID ,
+	apiKey: process.env.REACT_APP_FIREBASE_GOOGLE_API_KEY,
+	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+	appId: process.env.REACT_APP_FIREBASE_APP_ID,
+	measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
+console.log(firebaseConfig)
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-export { firebase, database as default };
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-
-
-
+export { firebase, googleAuthProvider, database as default };
 
 ///////////////////////////////////////////////////////
 
 ///////////////////REFERNCE////////////////////////////
 
 ///////////////////////////////////////////////////////
-
 
 // // Child removed
 

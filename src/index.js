@@ -12,6 +12,7 @@ import configStore from "./redux/store/configStore";
 import { startSetExpenses } from "./redux/actions/expenses";
 import { setTextFilter } from "./redux/actions/filter";
 import getVisibleExpenses from "./redux/selectors/expenses.selector";
+import {firebase} from "./firebase/firebase"
 
 const store = configStore();
 const state = store.getState();
@@ -27,10 +28,19 @@ const jsx = (
 		</BrowserRouter>
 	</Provider>
 );
+
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
 store.dispatch(startSetExpenses()).then(() => {
 	ReactDOM.render(jsx, document.getElementById("root"));
 });
 
-serviceWorker.unregister();
+firebase.auth().onAuthStateChanged((user)=> {
+	if(user){
+		console.log("Log in")
+	} else{
+		console.log("Log out")
+
+	}
+})
