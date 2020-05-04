@@ -11,21 +11,26 @@ import Header from "./misc/Header";
 import "react-dates/lib/css/_datepicker.css";
 import "./firebase/firebase";
 import Login from "./components/Login";
+import createHistory from "history/createBrowserHistory";
+
+export const history = createHistory();
 
 function App() {
 	return (
-		<div className="App">
-			<Header />
-			<Switch>
-				<Route exact path="/" component={Login} />
-				<Route exact path="/dashboard" component={ExpenseDashBoard} />
-				<Route exact path="/create" component={AddExpensePage} />
-				<Route exact path="/edit" component={EditExpensePage} />
-				<Route exact path="/help" component={HelpPage} />
-				<Route exact path="/edit/:id" component={EditExpensePage} />
-				<Route component={NotFoundPage} />
-			</Switch>
-		</div>
+		<Router history={history}>
+			<div className="App">
+				<Header />
+				<Switch>
+					<Route exact path="/" component={Login} />
+					<Route exact path="/dashboard" component={ExpenseDashBoard} />
+					<Route exact path="/create" component={AddExpensePage} />
+					<Route exact path="/edit" component={EditExpensePage} />
+					<Route exact path="/help" component={HelpPage} />
+					<Route exact path="/edit/:id" component={EditExpensePage} />
+					<Route component={NotFoundPage} />
+				</Switch>
+			</div>
+		</Router>
 	);
 }
 

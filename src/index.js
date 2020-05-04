@@ -2,45 +2,32 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter, Router } from "react-router-dom";
-import { AdminInfo } from "./playground/hoc";
+import App, { history } from "./App";
+
 // Redux
 
 import configStore from "./redux/store/configStore";
 import { startSetExpenses } from "./redux/actions/expenses";
-import { setTextFilter } from "./redux/actions/filter";
-import getVisibleExpenses from "./redux/selectors/expenses.selector";
-import {firebase} from "./firebase/firebase"
+import { firebase } from "./firebase/firebase";
 
 const store = configStore();
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-// console.log(visibleExpenses);
 
 console.log(store.getState());
 
 const jsx = (
 	<Provider store={store}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<App />
 	</Provider>
 );
 
-
 ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
-store.dispatch(startSetExpenses()).then(() => {
-	ReactDOM.render(jsx, document.getElementById("root"));
-});
-
-firebase.auth().onAuthStateChanged((user)=> {
-	if(user){
-		console.log("Log in")
-	} else{
-		console.log("Log out")
-
+firebase.auth().onAuthStateChanged((user) => {
+	if (user) {
+		store.dispatch(startSetExpenses()).then(() => {
+			ReactDOM.render(jsx, document.getElementById("root"));
+		});
+	} else {
+		history.push("/");
 	}
-})
+});
