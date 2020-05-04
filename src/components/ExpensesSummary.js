@@ -5,7 +5,6 @@ import selectExpenses from "../redux/selectors/expenses.selector";
 import selectExpensesTotal from "../redux/selectors/expenses-total.selector";
 
 export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
-	console.log("this is expenses => ", expenseCount, expensesTotal);
 	const expenseWord = expenseCount === 1 ? "expense" : "expenses";
 	const formattedExpensesTotal = numeral(expensesTotal / 100).format("$0,0.00");
 

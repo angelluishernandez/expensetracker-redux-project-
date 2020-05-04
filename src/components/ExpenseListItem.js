@@ -21,18 +21,11 @@ export const ExpenseListItem = ({
 				{numeral(amount / 100).format("$0,0.00")} -{" "}
 				{moment(createdAt).format("MMMM Do, YYYY")}
 			</p>
-			<button
-				onClick={() => {
-					dispatch(removeExpense({ id }));
-				}}
-			>
-				Remove
-			</button>
 		</div>
 	);
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		expenses: state.expenses,
 	};

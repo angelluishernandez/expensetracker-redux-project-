@@ -9,7 +9,9 @@ export default class ExpenseForm extends React.Component {
 	state = {
 		description: this.props.expense ? this.props.expense.description : "",
 		note: this.props.expense ? this.props.expense.note : "",
-		amount: this.props.expense ?(this.props.expense.amount / 100).toString() : "",
+		amount: this.props.expense
+			? (this.props.expense.amount / 100).toString()
+			: "",
 		createdAt: this.props.expense
 			? moment(this.props.expense.createdAt)
 			: moment(),
@@ -17,30 +19,29 @@ export default class ExpenseForm extends React.Component {
 		error: "",
 	};
 
-	onDescriptionChange = e => {
+	onDescriptionChange = (e) => {
 		const description = e.target.value;
 		this.setState(() => ({
 			description,
 		}));
 	};
 
-	onNoteChange = e => {
+	onNoteChange = (e) => {
 		e.persist();
 		this.setState({
 			note: e.target.value,
 		});
 	};
 
-	onAmountChange = e => {
+	onAmountChange = (e) => {
 		const amount = e.target.value;
+
 		if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
-			this.setState(() => ({
-				amount,
-			}));
+			this.setState(() => ({ amount }));
 		}
 	};
 
-	onDateChange = date => {
+	onDateChange = (date) => {
 		if (date) {
 			this.setState({
 				createdAt: date,
@@ -53,7 +54,7 @@ export default class ExpenseForm extends React.Component {
 		});
 	};
 
-	onSubmit = e => {
+	onSubmit = (e) => {
 		e.preventDefault();
 		if (!this.state.description || !this.state.amount) {
 			this.setState({
