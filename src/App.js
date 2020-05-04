@@ -7,24 +7,23 @@ import AddExpensePage from "./components/AddExpensePage";
 import EditExpensePage from "./components/EditExpensePage";
 import HelpPage from "./components/HelpPage";
 import NotFoundPage from "./misc/NotFoundPage";
-import Header from "./misc/Header";
 import "react-dates/lib/css/_datepicker.css";
 import "./firebase/firebase";
 import Login from "./components/Login";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
+import PrivateRoute from "./PrivateRoute";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 function App() {
 	return (
 		<Router history={history}>
 			<div className="App">
-				<Header />
 				<Switch>
 					<Route exact path="/" component={Login} />
-					<Route exact path="/dashboard" component={ExpenseDashBoard} />
-					<Route exact path="/create" component={AddExpensePage} />
-					<Route exact path="/edit" component={EditExpensePage} />
+					<PrivateRoute exact path="/dashboard" component={ExpenseDashBoard} />
+					<PrivateRoute exact path="/create" component={AddExpensePage} />
+					<PrivateRoute exact path="/edit" component={EditExpensePage} />
 					<Route exact path="/help" component={HelpPage} />
 					<Route exact path="/edit/:id" component={EditExpensePage} />
 					<Route component={NotFoundPage} />

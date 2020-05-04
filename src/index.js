@@ -9,6 +9,7 @@ import App, { history } from "./App";
 import configStore from "./redux/store/configStore";
 import { startSetExpenses } from "./redux/actions/expenses";
 import { firebase } from "./firebase/firebase";
+import { login, logout } from "./redux/actions/auth";
 
 const store = configStore();
 
@@ -20,14 +21,29 @@ const jsx = (
 	</Provider>
 );
 
+let hasRendered = false;
+
+const renderApp = () => {
+	if (!hasRendered) {
+		ReactDOM.render(jsx, document.getElementById("root"));
+		hasRendered = true;
+	}
+};
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged((user) => {
 	if (user) {
+		store.dispatch(login(user.uid));
 		store.dispatch(startSetExpenses()).then(() => {
-			ReactDOM.render(jsx, document.getElementById("root"));
+			renderApp();
+			if (history.location.pathname === "/") {
+				history.push("/dashboard");
+			}
 		});
 	} else {
+		store.dispatch(logout());
+		renderApp();
 		history.push("/");
 	}
 });
