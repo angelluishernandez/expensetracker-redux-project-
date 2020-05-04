@@ -4,14 +4,14 @@ import { startLogin } from "../redux/actions/auth";
 
 const Login = ({ startLogin }) => {
 	return (
-		<div>
-			<label>Username</label>
-			<input type="text" placeholder="Username" />
-			<label>Password</label>
-			<input type="password" placeholder="Password" />
-			<button type="submit" onClick={startLogin}>
-				Login
-			</button>
+		<div className="box-layout">
+			<div className="box-layout__box">
+				<h1 className="box-layout__title">Expensify</h1>
+				<p>*** Expense tracker ***</p>
+				<button type="submit" onClick={startLogin} className="button">
+					Login with Google{" "}
+				</button>
+			</div>
 		</div>
 	);
 };
